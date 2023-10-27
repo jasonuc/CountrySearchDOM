@@ -6,6 +6,7 @@ const startingWord = document.querySelector(".startingWord");
 const anyWord = document.querySelector(".anyWord");
 const input = document.querySelector("#input");
 const sortButton = document.querySelector(".sort-button")
+const searchTracker = document.querySelector("#search-tracker");
 numOfCountries.textContent = countries.length.toLocaleString()
 
 function countryDisplayMaker(countryName) {
@@ -24,14 +25,23 @@ for (const country of countries) {
 
 function filterCountries(letter) {
     let filteredCountries;
+    let searchMessage;
+
     if (startingWordActive) {
         filteredCountries = countries.filter(country => country.toLowerCase().startsWith(letter.toLowerCase()));
+        searchMessage = `There are <span class="italic text-green-600 font-bold font-mono">${filteredCountries.length}</span> countries that start with <span class="italic text-red-700 font-bold font-mono">"${letter}"</span>.`;
+        searchTracker.innerHTML = searchMessage;
     } else if (anyWordActive) {
         filteredCountries = countries.filter(country => country.toLowerCase().includes(letter.toLowerCase()));
+        searchMessage = `There are <span class="italic text-green-600 font-bold font-mono">${filteredCountries.length}</span> countries containing <span class="italic text-red-700 font-bold font-mono">"${letter}"</span>.`;
+        searchTracker.innerHTML = searchMessage;
     } else {
         filteredCountries = countries;
+        searchMessage = "Showing all countries.";
+        searchTracker.textContent = searchMessage;
     }
-    countrySection.innerHTML = ""; // Clear previous content
+
+    countrySection.innerHTML = "";
     filteredCountries.forEach(country => {
         countryDisplayMaker(country);
     });
@@ -67,8 +77,8 @@ sortButton.addEventListener('click', function() {
         filteredCountries = countries;
     }
 
-    filteredCountries.sort(); // Sort the countries alphabetically
-    countrySection.innerHTML = ""; // Clear previous content
+    filteredCountries.sort();
+    countrySection.innerHTML = "";
     filteredCountries.forEach(country => {
         countryDisplayMaker(country);
     });
