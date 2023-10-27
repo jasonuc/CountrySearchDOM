@@ -3,6 +3,7 @@
 
 <head>
 	<title>Country Search DOM </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link
@@ -17,19 +18,19 @@
 		class="flex flex-col shrink-0 gap-y-3 justify-center items-center bg-globeBg bg-cover bg-center bg-no-repeat bg-blend-overlay bg-blue-300 w-screen h-[25rem] shadow-lg">
 		<h1 class="text-4xl md:text-6xl tracking-wider font-libreCaslonDisplay font-extrabold text-charcoal">World
 			Countries Search</h1>
-		<p class="italic">Total number of countries: <span class="font-libreCaslonDisplay font-extrabold">193</span></p>
+		<p class="italic">Total number of countries: <span class="number-of-countries font-libreCaslonDisplay font-extrabold"></span></p>
 		<p id="search-tracker"></p>
 
 		<div
 			class="flex w-1/4 h-[12rem] lg:h-[3rem] flex-col lg:flex-row font-oswald justify-evenly lg:items-stretch lg:justify-center md:gap-x-3">
 			<button
-				class="w-[100%] lg:w-[45%] h-[30%] lg:h-auto font-bold tracking-wide shadow-md rounded-md hover:rounded-xl border-2 bg-stone-200 text-xs md:text-base">Starting
+				class="startingWord w-[100%] lg:w-[45%] h-[30%] lg:h-auto font-bold tracking-wide shadow-md rounded-md hover:rounded-xl border-2 bg-stone-200 text-xs md:text-base">Starting
 				Word</button>
 			<button
-				class="w-[100%] lg:w-[45%]  h-[30%] lg:h-auto font-bold tracking-wide shadow-md rounded-md hover:rounded-xl border-2 bg-stone-200 text-xs md:text-base">Search
+				class="anyWord w-[100%] lg:w-[45%]  h-[30%] lg:h-auto font-bold tracking-wide shadow-md rounded-md hover:rounded-xl border-2 bg-stone-200 text-xs md:text-base">Search
 				With Any Word</button>
 			<button
-				class="w-[100%] lg:w-[10%] s h-[30%] lg:h-auto hadow-lg rounded-md hover:rounded-xl border-2 bg-stone-200 flex items-center justify-center  text-xs md:text-base">
+				class="sort-button w-[100%] lg:w-[10%] s h-[30%] lg:h-auto hadow-lg rounded-md hover:rounded-xl border-2 bg-stone-200 flex items-center justify-center  text-xs md:text-base">
 				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 					class="bi bi-sort-alpha-up" viewBox="0 0 16 16">
 					<path fill-rule="evenodd"
@@ -41,40 +42,11 @@
 
 		</div>
 
-		<input type="text" name="country-name" id="country-name" placeholder="Enter country here..." class="w-1/2 md:w-1/4 h-[2.5rem] px-2 box-border rounded-md placeholder:italic placeholder:text-slate-400 border-solid border-2 focus-visible:rounded-xl">
+		<input type="text" name="country-name" id="input" placeholder="Enter country here..." class="w-1/2 md:w-1/4 h-[2.5rem] px-2 box-border rounded-md placeholder:italic placeholder:text-slate-400 border-solid border-2 focus-visible:rounded-xl ring-black">
 
 	</header>
 
-	<div class="flex flex-row flex-wrap flex-grow gap-3 border-solid border-black justify-center box-border p-2 md:p-5 w-screen">
-
-		<div class="w-[10rem] md:w-1/4 h-[10rem] md:h-[20rem] bg-blend-overlay bg-slate-700 bg-center bg-mapBg flex justify-center items-center">
-			<p class="text-2xl font-bold text-white"></p>
-		</div>
-		
-		<div class="w-[10rem] md:w-1/4 h-[10rem] md:h-[20rem] bg-blend-overlay bg-slate-700 bg-center bg-mapBg">
-			<p></p>
-		</div>
-		
-		<div class="w-[10rem] md:w-1/4 h-[10rem] md:h-[20rem] bg-blend-overlay bg-slate-700 bg-center bg-mapBg">
-			<p></p>
-		</div>
-		
-		<div class="w-[10rem] md:w-1/4 h-[10rem] md:h-[20rem] bg-blend-overlay bg-slate-700 bg-center bg-mapBg">
-			<p></p>
-		</div>
-		
-		<div class="w-[10rem] md:w-1/4 h-[10rem] md:h-[20rem] bg-blend-overlay bg-slate-700 bg-center bg-mapBg">
-			<p></p>
-		</div>
-		
-		<div class="w-[10rem] md:w-1/4 h-[10rem] md:h-[20rem] bg-blend-overlay bg-slate-700 bg-center bg-mapBg">
-			<p></p>
-		</div>
-		
-		<div class="w-[10rem] md:w-1/4 h-[10rem] md:h-[20rem] bg-blend-overlay bg-slate-700 bg-center bg-mapBg">
-			<p></p>
-		</div>
-		
+	<div class="country-section flex flex-row flex-wrap flex-grow gap-3 border-solid border-black justify-center box-border p-2 md:p-5 w-screen">
 
 	</div>
 

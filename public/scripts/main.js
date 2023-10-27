@@ -1,2 +1,75 @@
-console.log(countries)
-alert('Open the console and check if the countries has been loaded')
+import { countries } from './countries.js'
+
+const countrySection = document.querySelector(".country-section");
+const numOfCountries = document.querySelector(".number-of-countries");
+const startingWord = document.querySelector(".startingWord");
+const anyWord = document.querySelector(".anyWord");
+const input = document.querySelector("#input");
+const sortButton = document.querySelector(".sort-button")
+numOfCountries.textContent = countries.length.toLocaleString()
+
+function countryDisplayMaker(countryName) {
+    const newDisplay = document.createElement('div')
+    const newDisplayP = document.createElement('p');
+    newDisplay.classList.add("w-[10rem]", "md:w-1/4", "h-[10rem]", "md:h-[20rem]", "bg-blend-overlay", "bg-slate-700", "bg-center", "bg-mapBg",  "flex", "justify-center", "items-center");
+    newDisplayP.classList.add("text-lg", "md:text-2xl", "font-bold", "text-white");
+    newDisplayP.innerText = countryName;
+    newDisplay.appendChild(newDisplayP);
+    countrySection.appendChild(newDisplay);
+}
+
+for (const country of countries) {
+    countryDisplayMaker(country);
+}
+
+function filterCountries(letter) {
+    let filteredCountries;
+    if (startingWordActive) {
+        filteredCountries = countries.filter(country => country.toLowerCase().startsWith(letter.toLowerCase()));
+    } else if (anyWordActive) {
+        filteredCountries = countries.filter(country => country.toLowerCase().includes(letter.toLowerCase()));
+    } else {
+        filteredCountries = countries;
+    }
+    countrySection.innerHTML = ""; // Clear previous content
+    filteredCountries.forEach(country => {
+        countryDisplayMaker(country);
+    });
+}
+
+let startingWordActive = false;
+let anyWordActive = false;
+
+startingWord.addEventListener('click', function() {
+    startingWordActive = !startingWordActive;
+    anyWordActive = false;
+});
+
+anyWord.addEventListener('click', function() {
+    anyWordActive = !anyWordActive;
+    startingWordActive = false;
+});
+
+
+input.addEventListener('input', function(event) {
+    const searchLetter = event.target.value.trim();
+    filterCountries(searchLetter);
+});
+
+sortButton.addEventListener('click', function() {
+    let searchLetter = input.value.trim();
+    let filteredCountries;
+    if (startingWordActive) {
+        filteredCountries = countries.filter(country => country.toLowerCase().startsWith(searchLetter.toLowerCase()));
+    } else if (anyWordActive) {
+        filteredCountries = countries.filter(country => country.toLowerCase().includes(searchLetter.toLowerCase()));
+    } else {
+        filteredCountries = countries;
+    }
+
+    filteredCountries.sort(); // Sort the countries alphabetically
+    countrySection.innerHTML = ""; // Clear previous content
+    filteredCountries.forEach(country => {
+        countryDisplayMaker(country);
+    });
+});
