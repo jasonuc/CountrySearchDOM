@@ -52,11 +52,15 @@ let anyWordActive = false;
 
 startingWord.addEventListener('click', function() {
     startingWordActive = !startingWordActive;
+    startingWord.textContent = "• Starts with ..."
+    anyWord.textContent = "Contains ..."
     anyWordActive = false;
 });
 
 anyWord.addEventListener('click', function() {
     anyWordActive = !anyWordActive;
+    startingWord.textContent = "Starts with ..."
+    anyWord.textContent = "• Contains ..."
     startingWordActive = false;
 });
 
